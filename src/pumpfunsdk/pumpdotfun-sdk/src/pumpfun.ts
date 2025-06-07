@@ -6,7 +6,7 @@ import {
   PublicKey,
   Transaction,
 } from "@solana/web3.js";
-import { Program, Provider } from "@coral-xyz/anchor";
+import { Program, Provider, Idl } from "@coral-xyz/anchor";
 import { GlobalAccount } from "./globalAccount";
 import {
   toCompleteEvent,
@@ -44,10 +44,10 @@ export const METADATA_SEED = "metadata";
 export const DEFAULT_DECIMALS = 6;
 
 export class PumpFunSDK {
-  public program: Program<PumpFun>;
+  public program: Program<Idl>;
   public connection: Connection;
   constructor(provider?: Provider) {
-    this.program = new Program<PumpFun>(IDL as PumpFun, provider);
+    this.program = new Program(IDL as unknown as Idl, new PublicKey(PROGRAM_ID), provider);
     this.connection = this.program.provider.connection;
   }
   async bundleBuys(
