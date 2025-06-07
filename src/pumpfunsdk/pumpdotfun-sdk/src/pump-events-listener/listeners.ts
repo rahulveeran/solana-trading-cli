@@ -12,20 +12,20 @@ export function getProvider(){
 }
 
 export async function subscribeToCompleteBondingCurveEvent(sdk: PumpFunSDK){
-    const completeEventId = sdk.addEventListener("completeEvent", (event, slot, signature) => {
+    const completeEventId = sdk.addEventListener("completeEvent", (event: any, slot: any, signature: any) => {
         console.log("completeEvent", event, slot, signature);
     });
     console.log("Subscribed to completeEvent with ID:", completeEventId);
 }
 export async function subscribeToCreatePumpTokenEvent(sdk: PumpFunSDK){
-    const createEventId = sdk.addEventListener("createEvent", (event, slot, signature) => {
+    const createEventId = sdk.addEventListener("createEvent", (event: any, slot: any, signature: any) => {
         console.log("createEvent", event, slot, signature);
         console.log("mint pubkey", event.mint.toBase58())
     });
     console.log("Subscribed to createEvent with ID:", createEventId);
 }
 export async function subscribeToTradeEvent(sdk: PumpFunSDK){
-    const tradeEventId = sdk.addEventListener("tradeEvent", (event, slot, signature) => {
+    const tradeEventId = sdk.addEventListener("tradeEvent", (event: any, slot: any, signature: any) => {
         console.log("tradeEvent", event, slot, signature);
     });
     console.log("Subscribed to tradeEvent with ID:", tradeEventId);
