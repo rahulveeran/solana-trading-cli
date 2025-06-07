@@ -71,8 +71,13 @@ return client;
 let tipAccounts: string[] = [];
 (async () => {
 try {
-    tipAccounts = await c.getTipAccounts();
-    console.log('Result:', tipAccounts);
+    const tipAccountResult = await c.getTipAccounts();
+    if (tipAccountResult.ok) {
+        tipAccounts = tipAccountResult.value;
+        console.log('Result:', tipAccounts);
+    } else {
+        console.error('Error:', tipAccountResult.error);
+    }
 } catch (error) {
     console.error('Error:', error);
 }

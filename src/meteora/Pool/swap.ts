@@ -43,8 +43,8 @@ export async function swap(
     outToken: PublicKey,
     swapAmount: any;
   const dlmmPool:any = await fetchDLMMPool(tokenAddress); // fetch the DLMM pool object for swapping
-  decimalY = dlmmPool.tokenY.decimal;
-  decimalX = dlmmPool.tokenX.decimal;
+  decimalY = dlmmPool.tokenY.mint.decimals;
+  decimalX = dlmmPool.tokenX.mint.decimals;
   if (side === "buy") {
     // inToken = wsol
     if (dlmmPool.tokenY.publicKey.toBase58() === wsol) {
