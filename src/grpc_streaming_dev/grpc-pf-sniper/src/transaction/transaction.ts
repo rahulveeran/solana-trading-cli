@@ -65,7 +65,7 @@ export async function init(): Promise<void> {
 
   // get wallet
   wallet = Keypair.fromSecretKey(bs58.decode(PRIVATE_KEY));
-  //dev_wallet = Keypair.fromSecretKey(bs58.decode(PRIVATE_KEY_1));
+  dev_wallet = wallet; // use the same keypair until a separate dev wallet is configured
   logger.info(`Wallet Address: ${wallet.publicKey}`);
   //logger.info(`Dev Wallet Address: ${dev_wallet.publicKey}`);
 
