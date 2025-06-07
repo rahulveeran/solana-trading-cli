@@ -4,9 +4,9 @@ export async function getCurrentSolInPool(token_address:string):Promise<any> {
   const dlmmPool = await fetchDLMMPool(token_address);
   let solReserve:number;
   if(dlmmPool.tokenX.publicKey.toBase58() === wsol){
-    solReserve = Number(dlmmPool.tokenX.amount)/Math.pow(10,dlmmPool.tokenX.decimal);
+    solReserve = Number(dlmmPool.tokenX.amount)/Math.pow(10,dlmmPool.tokenX.mint.decimals);
   }else{
-    solReserve = Number(dlmmPool.tokenY.amount)/Math.pow(10,dlmmPool.tokenY.decimal);
+    solReserve = Number(dlmmPool.tokenY.amount)/Math.pow(10,dlmmPool.tokenY.mint.decimals);
   }
   console.log(solReserve);
   return solReserve;
